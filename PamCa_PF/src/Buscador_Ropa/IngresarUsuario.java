@@ -4,6 +4,8 @@
  */
 package Buscador_Ropa;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan Pardo
@@ -63,6 +65,11 @@ public class IngresarUsuario extends javax.swing.JFrame {
         cliente.setText("Cliente");
 
         acceder.setText("Acceder");
+        acceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accederActionPerformed(evt);
+            }
+        });
 
         regresar.setText("Regresar");
         regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -144,10 +151,45 @@ public class IngresarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarActionPerformed
-       CrearIngresar ci = new CrearIngresar();
-       ci.setVisible(true);
-       this.setVisible(false);
+        CrearIngresar ci = new CrearIngresar();
+        ci.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_regresarActionPerformed
+
+    private void accederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accederActionPerformed
+        if (nombre.getText().isEmpty() | contra.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor llene todos los campos solicitados para poder continuar.");
+        } else {
+
+            if (admin.isSelected()) {
+
+                String Nombre = nombre.getText();
+
+                if (FileManager.comprobar(Nombre, "Usuarios/Administradores.txt")) {
+                    JOptionPane.showMessageDialog(null, "Usuario Encontrado");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró al usuario");
+
+                }
+
+            } else if (cliente.isSelected()) {
+                String Nombre = nombre.getText();
+
+                if (FileManager.comprobar(Nombre, "Usuarios/Clientes.txt")) {
+                    JOptionPane.showMessageDialog(null, "Usuario Encontrado");
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se encontró al usuario");
+
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No especificó el tipo de usuario con el que desea ingresar.");
+            }
+
+        }
+    }//GEN-LAST:event_accederActionPerformed
 
     /**
      * @param args the command line arguments
