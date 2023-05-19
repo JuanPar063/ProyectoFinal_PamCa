@@ -1,29 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Buscador_Ropa;
 
-/**
- *
- * @author Juan Pardo
- */
+
 public class prenda {
-
-    private int id;
+private int id;
     private String nombre;
-    private String descripcion;
-    private double precio;
-    private String imagen;
+    private String tipo;
+    private String talla;
+    private float precio;
+    private int cantidad;
+    private byte[] imagen;
 
-    public prenda (int id, String nombre, String descripcion, double precio, String imagen) {
+    // Constructor
+    public prenda(int id, String nombre, String tipo, String talla, float precio, int cantidad, byte[] imagen) {
         this.id = id;
         this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.tipo = tipo;
+        this.talla = talla;
         this.precio = precio;
+        this.cantidad = cantidad;
         this.imagen = imagen;
     }
 
+    // Getters y setters
     public int getId() {
         return id;
     }
@@ -40,27 +39,43 @@ public class prenda {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public double getPrecio() {
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 
-    public String getImagen() {
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 

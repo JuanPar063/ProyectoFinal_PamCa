@@ -134,7 +134,7 @@ public class eliminar_ropa extends javax.swing.JFrame {
 
                     // Obtener la conexión a la base de datos
                     Connection conexion = DriverManager.getConnection(
-                            "jdbc:mysql://localhost:3306/bd_codigo", "root", "0411");
+                            "jdbc:mysql://10.20.46.42:3306/bd_codigo", "conexion", "1235");
 
                     // Consultar si ya existe un registro con el mismo id
                     String comprobacionSQL = "SELECT id FROM ropa WHERE id = ?";
