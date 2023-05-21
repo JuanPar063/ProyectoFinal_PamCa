@@ -157,7 +157,10 @@ public class IngresarUsuario extends javax.swing.JFrame {
                 String Nombre = nombre.getText();
 
                 if (FileManager.comprobar(Nombre, "Usuarios/Administradores.txt")) {
-                    JOptionPane.showMessageDialog(null, "Usuario Encontrado");
+                    JOptionPane.showMessageDialog(null, "Bienvenido Administrador");
+                    Menú_Admin ma = new Menú_Admin();
+                    ma.setVisible(true);
+                    this.setVisible(false);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No se encontró al usuario");

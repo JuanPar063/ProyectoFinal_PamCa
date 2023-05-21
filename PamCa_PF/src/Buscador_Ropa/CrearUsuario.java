@@ -13,7 +13,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         confirma.setVisible(false);
     }
 
-    private static String clavesegura = "ClaveSegura123";
+    private static String clavesegura = "12345";
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

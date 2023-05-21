@@ -16,6 +16,7 @@ public class Menú_inicio extends javax.swing.JFrame {
     public Menú_inicio() {
         initComponents();
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -41,14 +42,29 @@ public class Menú_inicio extends javax.swing.JFrame {
         jLabel1.setText("PamCa");
 
         carrito.setText("Carrito");
+        carrito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carritoActionPerformed(evt);
+            }
+        });
 
         cuenta.setText("Cuenta");
+        cuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cuentaActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Bienvenido al catalogo de ropa a la moda PamCa. A continuación seleccione el tipo de prenda que esta buscando.");
 
         calzado.setText("Calzado");
 
         prendassuperiores.setText("Prendas superiores");
+        prendassuperiores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prendassuperioresActionPerformed(evt);
+            }
+        });
 
         prendasinferiores.setText("Prendas inferiores");
 
@@ -104,6 +120,24 @@ public class Menú_inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void carritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carritoActionPerformed
+        Carrito car = new Carrito();
+        car.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_carritoActionPerformed
+
+    private void cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentaActionPerformed
+        CrearIngresar ci = new CrearIngresar();
+        ci.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_cuentaActionPerformed
+
+    private void prendassuperioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prendassuperioresActionPerformed
+        PrendasSuperiores ps = new PrendasSuperiores();
+        ps.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_prendassuperioresActionPerformed
 
     /**
      * @param args the command line arguments

@@ -191,11 +191,13 @@ public class consultar_ropa extends javax.swing.JFrame {
             int anchoColumna1 = 200; // Tamaño en píxeles
             int anchoimagen = 350; // Tamaño en píxeles
             int anchoidtallapreciocant = 60; // Tamaño en píxeles
+            
             inventario.getColumnModel().getColumn(0).setPreferredWidth(anchoidtallapreciocant);
             inventario.getColumnModel().getColumn(3).setPreferredWidth(anchoidtallapreciocant);
             inventario.getColumnModel().getColumn(4).setPreferredWidth(anchoidtallapreciocant);
             inventario.getColumnModel().getColumn(5).setPreferredWidth(anchoidtallapreciocant);
             inventario.getColumnModel().getColumn(6).setPreferredWidth(anchoimagen);
+            
             conexion.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al cargar los datos de la tabla: " + ex.getMessage());

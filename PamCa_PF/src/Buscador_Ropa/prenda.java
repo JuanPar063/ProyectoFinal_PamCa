@@ -12,7 +12,7 @@ private int id;
     private byte[] imagen;
 
     // Constructor
-    public prenda(int id, String nombre, String tipo, String talla, float precio, int cantidad, byte[] imagen) {
+    public prenda(int id, String nombre, String tipo, String talla, float precio, int cantidad, int cantidadcarrito, byte[] imagen) {
         this.id = id;
         this.nombre = nombre;
         this.tipo = tipo;
@@ -69,6 +69,14 @@ private int id;
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+    
+    public int getCantidadCarrito() {
+        return cantidad;
+    }
+
+    public void setCantidadCarrito(int cantidadcarrito) {
+        this.cantidad = cantidadcarrito;
     }
 
     public byte[] getImagen() {

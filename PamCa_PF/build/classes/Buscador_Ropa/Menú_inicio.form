@@ -97,11 +97,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Carrito"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="carritoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="cuenta">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cuenta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cuentaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -117,6 +123,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Prendas superiores"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prendassuperioresActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="prendasinferiores">
       <Properties>
