@@ -1,7 +1,6 @@
 package Buscador_Ropa;
 
 import static Buscador_Ropa.PrendasSuperiores.listaPrenda;
-import java.io.IOException;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -39,14 +38,14 @@ public class Carrito extends javax.swing.JFrame {
         // Establecer el renderizador de celdas personalizado para la columna de imagen
         imageColumn.setCellRenderer(imageRenderer);
 
-        int anchoimagen = 350; // Tamaño en píxeles
+        /*int anchoimagen = 350; // Tamaño en píxeles
         int anchoidtallapreciocant = 60; // Tamaño en píxeles
 
         tablacarrito.getColumnModel().getColumn(0).setPreferredWidth(anchoidtallapreciocant);
         tablacarrito.getColumnModel().getColumn(1).setPreferredWidth(anchoidtallapreciocant);
         tablacarrito.getColumnModel().getColumn(2).setPreferredWidth(anchoidtallapreciocant);
         tablacarrito.getColumnModel().getColumn(3).setPreferredWidth(anchoidtallapreciocant);
-        tablacarrito.getColumnModel().getColumn(4).setPreferredWidth(anchoimagen);
+        tablacarrito.getColumnModel().getColumn(4).setPreferredWidth(anchoimagen);*/
     }
 
     @SuppressWarnings("unchecked")

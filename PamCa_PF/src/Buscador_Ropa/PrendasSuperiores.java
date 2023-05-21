@@ -1,4 +1,3 @@
-
 package Buscador_Ropa;
 
 import java.util.List;
@@ -18,23 +17,22 @@ import javax.swing.JOptionPane;
  */
 public class PrendasSuperiores extends javax.swing.JFrame {
 
-  
     public // Crear una lista para almacenar los objetos Ropa
             List<prenda> listaprendas = new ArrayList<prenda>();
     public static CarritoClass CarritoC = new CarritoClass();
     public static List<prenda> listaPrenda = CarritoC.getListaPrenda();
-    public List<prenda> Enviar(){   
-      return listaPrenda; 
+
+    public List<prenda> Enviar() {
+        return listaPrenda;
     }
     public static int c = 0;
     public static int cant = 0;
-  
 
     public PrendasSuperiores() {
-        
+
         initComponents();
         this.setLocationRelativeTo(null);
-        
+        cant = 0;
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_codigo?useSSL=false", "root", "0411");
 
@@ -68,7 +66,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la imagen." + e);
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -266,8 +264,8 @@ public class PrendasSuperiores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
-        
-       if (c < 2) {
+
+        if (c < 2) {
 
             c = c + 1;
             prenda prenda1 = listaprendas.get(c);
@@ -279,6 +277,8 @@ public class PrendasSuperiores extends javax.swing.JFrame {
             precio.setText(String.valueOf(prenda1.getPrecio()));
 
         }
+        cant = 0;
+        ccom.setText(String.valueOf(cant));
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void anteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorActionPerformed
@@ -295,9 +295,12 @@ public class PrendasSuperiores extends javax.swing.JFrame {
             precio.setText(String.valueOf(prenda1.getPrecio()));
 
         }
+        cant = 0;
+        ccom.setText(String.valueOf(cant));
     }//GEN-LAST:event_anteriorActionPerformed
 
     private void masActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masActionPerformed
+
         prenda prenda1 = listaprendas.get(c);
         int cantidadcomprar = Integer.parseInt(ccom.getText());
         if (cantidadcomprar <= prenda1.getCantidad()) {
@@ -337,7 +340,6 @@ public class PrendasSuperiores extends javax.swing.JFrame {
             statement.executeUpdate();
 
             // Añade la prenda al carrito
-            
             CarritoC.agregarPrenda(prenda1);
 
         } catch (SQLException e) {
@@ -352,7 +354,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
     }//GEN-LAST:event_carritoActionPerformed
 
     private void cuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuentaActionPerformed
-         CrearIngresar ci = new CrearIngresar();
+        CrearIngresar ci = new CrearIngresar();
         ci.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_cuentaActionPerformed

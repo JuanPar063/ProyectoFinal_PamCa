@@ -9,6 +9,7 @@ private int id;
     private String talla;
     private float precio;
     private int cantidad;
+    private int cantidadcarrito;
     private byte[] imagen;
 
     // Constructor
@@ -19,6 +20,7 @@ private int id;
         this.talla = talla;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.cantidadcarrito = cantidadcarrito;
         this.imagen = imagen;
     }
 
@@ -72,11 +74,11 @@ private int id;
     }
     
     public int getCantidadCarrito() {
-        return cantidad;
+        return cantidadcarrito;
     }
 
     public void setCantidadCarrito(int cantidadcarrito) {
-        this.cantidad = cantidadcarrito;
+        this.cantidadcarrito = cantidadcarrito;
     }
 
     public byte[] getImagen() {
