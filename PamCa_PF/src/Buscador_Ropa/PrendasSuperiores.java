@@ -8,7 +8,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +23,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
             List<prenda> listaprendas = new ArrayList<prenda>();
     public static CarritoClass CarritoC = new CarritoClass();
     public static List<prenda> listaPrenda = CarritoC.getListaPrenda();
+    public static List<String> tallasDisponibles = new ArrayList<>();
 
     public List<prenda> Enviar() {
         return listaPrenda;
@@ -32,9 +35,10 @@ public class PrendasSuperiores extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
+        Cerrar_Carrito.confirmarSalida(this);
         cant = 0;
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_codigo?useSSL=false", "root", "0411");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_codigo?allowPublicKeyRetrieval=true", "root", "0411");
 
             Statement statement = connection.createStatement();
             String query = "SELECT * FROM ropa WHERE tipo = 'prenda superior'";
@@ -54,6 +58,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
                 prenda ropa = new prenda(id, nombre, tipo, talla, precio, cantidad, cantidadcarrito, imagen);
                 listaprendas.add(ropa);
             }
+
             prenda prenda1 = listaprendas.get(c);
             ImageIcon imageIcon = new ImageIcon(prenda1.getImagen());
 
@@ -62,6 +67,21 @@ public class PrendasSuperiores extends javax.swing.JFrame {
             talla.setText(prenda1.getTalla());
             precio.setText(String.valueOf(prenda1.getPrecio()));
 
+            /* Establecer las tallas que hay de la prenda:
+            for (prenda ropa : listaprendas) {
+                String talla = ropa.getTalla();
+                if (!tallasDisponibles.contains(talla)) {
+                    tallasDisponibles.add(talla);
+                }
+            }
+
+            // Crea el modelo:
+            DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
+            for (String talla : tallasDisponibles) {
+                comboBoxModel.addElement(talla);
+            }
+            
+           tallaseleccion.setModel(comboBoxModel);*/
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la imagen." + e);
         }
@@ -228,7 +248,6 @@ public class PrendasSuperiores extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(anterior, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44))
                             .addGroup(layout.createSequentialGroup()
@@ -243,8 +262,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(17, 17, 17)
-                            .addComponent(ccom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(7, 7, 7))
+                            .addComponent(ccom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(mas)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,7 +283,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
 
-        if (c < 2) {
+        if (c < (listaprendas.size() - 1)) {
 
             c = c + 1;
             prenda prenda1 = listaprendas.get(c);
@@ -279,6 +297,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
         }
         cant = 0;
         ccom.setText(String.valueOf(cant));
+
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void anteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorActionPerformed
@@ -303,7 +322,7 @@ public class PrendasSuperiores extends javax.swing.JFrame {
 
         prenda prenda1 = listaprendas.get(c);
         int cantidadcomprar = Integer.parseInt(ccom.getText());
-        if (cantidadcomprar <= prenda1.getCantidad()) {
+        if (cantidadcomprar < prenda1.getCantidad()) {
             cant = cant + 1;
             ccom.setText(String.valueOf(cant));
         }
@@ -324,26 +343,34 @@ public class PrendasSuperiores extends javax.swing.JFrame {
         // Define la consulta SQL para actualizar la celda
         String actualizar = "UPDATE ropa SET cantidad_carrito = ? WHERE id = ?";
 
-        // Especifica los nuevos valores y el ID de la fila que quieres actualizar
-        int nuevoValor = cant;
-        int id = prenda1.getId();
+        if (prenda1.getCantidadCarrito() != 0) {
+            JOptionPane.showMessageDialog(null, "Ya se añadió la prenda al carrito, si desea añadir más cantidad puede hacerlo desde el carrito.");
 
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_codigo?useSSL=false", "root", "0411");
+        } else {
+            // Especifica los nuevos valores y el ID de la fila que quieres actualizar
+            int nuevoValor = cant;
+            int id = prenda1.getId();
 
-            // Prepara la consulta SQL con los parámetros necesarios
-            PreparedStatement statement = connection.prepareStatement(actualizar);
-            statement.setInt(1, nuevoValor);
-            statement.setInt(2, id);
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_codigo?useSSL=false", "root", "0411");
 
-            // Ejecuta la consulta SQL
-            statement.executeUpdate();
+                // Prepara la consulta SQL con los parámetros necesarios
+                PreparedStatement statement = connection.prepareStatement(actualizar);
+                statement.setInt(1, nuevoValor);
+                statement.setInt(2, id);
 
-            // Añade la prenda al carrito
-            CarritoC.agregarPrenda(prenda1);
+                // Ejecuta la consulta SQL
+                statement.executeUpdate();
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo actualizar la cantcarrito y añadir al carrito." + e);
+                // Actualiza la información de cuanta cantidad de la prenda hay en el carrito
+                prenda1.setCantidadCarrito(nuevoValor);
+
+                // Añade la prenda al carrito
+                CarritoC.agregarPrenda(prenda1);
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "No se pudo actualizar la cantcarrito y añadir al carrito." + e);
+            }
         }
     }//GEN-LAST:event_añadirActionPerformed
 

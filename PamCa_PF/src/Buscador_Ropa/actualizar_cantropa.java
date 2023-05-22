@@ -23,6 +23,7 @@ public class actualizar_cantropa extends javax.swing.JFrame {
     public actualizar_cantropa() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Cerrar_Carrito.confirmarSalida(this);
     }
 
     /**

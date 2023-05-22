@@ -30,6 +30,7 @@ public class consultar_ropa extends javax.swing.JFrame {
     public consultar_ropa() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Cerrar_Carrito.confirmarSalida(this);
     }
 
     /**
@@ -188,7 +189,6 @@ public class consultar_ropa extends javax.swing.JFrame {
             inventario.setRowHeight(alturaCelda);
 
             // Ajustar el ancho de las columnas
-            int anchoColumna1 = 200; // Tamaño en píxeles
             int anchoimagen = 350; // Tamaño en píxeles
             int anchoidtallapreciocant = 60; // Tamaño en píxeles
             

@@ -23,6 +23,7 @@ public class eliminar_ropa extends javax.swing.JFrame {
     public eliminar_ropa() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Cerrar_Carrito.confirmarSalida(this);
     }
 
     /**

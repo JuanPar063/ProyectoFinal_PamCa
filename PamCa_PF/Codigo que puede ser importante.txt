@@ -1,36 +1,5 @@
 
-**  CODIGO PARA ACTUALIZAR ALGUN REGISTRO EXISTENTE  **
-
- try {
-            int idProducto = Integer.parseInt(id.getText());
-            // Obtener la conexión a la base de datos
-
-            Connection conexion = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bd_codigo", "root", "0411");
-            
-            
-
-            // Crear la consulta SQL
-            String consultaSQL = "UPDATE productos SET nombre = ?, descripcion = ?, precio = ? WHERE id_producto = ?";
-
-            // Crear el objeto PreparedStatement
-            PreparedStatement consulta = conexion.prepareStatement(consultaSQL);
-
-            // Establecer los valores de la consulta
-            consulta.setString(1, nombre.getText());
-            consulta.setString(2, descripcion.getText());
-            consulta.setString(2, imagen.getText());
-            consulta.setInt(4, idProducto);
-
-            int filasActualizadas = consulta.executeUpdate();
-
-            conexion.close();
-            JOptionPane.showMessageDialog(null, "El producto se ha actualizado correctamente./n Numero de filas actualizadas: " + filasActualizadas);
-            
-        
-            } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No sirvió");
-        }
++ Cuando se vayan a crear las listas de las prendas de las otras categorias usar listaprendasc para calzado y listaprendasi para pantalones
 
 
 

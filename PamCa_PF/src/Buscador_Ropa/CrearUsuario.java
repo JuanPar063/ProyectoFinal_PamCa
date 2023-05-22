@@ -11,6 +11,7 @@ public class CrearUsuario extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         confirma.setVisible(false);
+        Cerrar_Carrito.confirmarSalida(this);
     }
 
     private static String clavesegura = "12345";

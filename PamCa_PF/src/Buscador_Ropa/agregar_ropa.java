@@ -24,6 +24,7 @@ public class agregar_ropa extends javax.swing.JFrame {
     public agregar_ropa() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Cerrar_Carrito.confirmarSalida(this);
     }
 
     int idropa = 0;

@@ -16,6 +16,7 @@ public class CrearIngresar extends javax.swing.JFrame {
     public CrearIngresar() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Cerrar_Carrito.confirmarSalida(this);
     }
 
     /**

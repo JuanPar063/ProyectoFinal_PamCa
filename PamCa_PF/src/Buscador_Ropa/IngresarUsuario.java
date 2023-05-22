@@ -13,6 +13,7 @@ public class IngresarUsuario extends javax.swing.JFrame {
     public IngresarUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        Cerrar_Carrito.confirmarSalida(this);
     }
 
    

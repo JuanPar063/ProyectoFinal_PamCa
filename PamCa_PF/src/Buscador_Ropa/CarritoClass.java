@@ -24,7 +24,7 @@ public class CarritoClass {
         return listaPrenda;
     }
 
-    public int getCantidadRopa() {
+    public int getCantidadPrenda() {
         return listaPrenda.size();
     }
 }
