@@ -118,6 +118,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Calzado"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="calzadoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="prendassuperiores">
       <Properties>
@@ -131,6 +134,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Prendas inferiores"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prendasinferioresActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

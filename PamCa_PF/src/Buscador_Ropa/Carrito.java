@@ -1,11 +1,13 @@
 package Buscador_Ropa;
 
-import static Buscador_Ropa.PrendasSuperiores.CarritoC;
+import static Buscador_Ropa.IngresarUsuario.usuname;
 import static Buscador_Ropa.PrendasSuperiores.listaPrenda;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -14,7 +16,12 @@ import javax.swing.table.TableColumn;
  * @author Juan Pardo
  */
 public class Carrito extends javax.swing.JFrame {
-
+    
+    public static String Fecha;
+    public static String name;
+    public static int cantidad;
+    public static float price;
+    
     public Carrito() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -110,6 +117,11 @@ public class Carrito extends javax.swing.JFrame {
         });
 
         comprar.setText("Comprar");
+        comprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comprarActionPerformed(evt);
+            }
+        });
 
         editarcarrito.setText("Editar Carrito");
         editarcarrito.addActionListener(new java.awt.event.ActionListener() {
@@ -303,6 +315,31 @@ public class Carrito extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
+        int sumacant = 0;
+        float sumaprecio = 0;
+        for (prenda ropa : listaPrenda) {
+            sumacant = sumacant + ropa.getCantidadCarrito();
+            sumaprecio = sumaprecio + (ropa.getPrecio() * ropa.getCantidadCarrito());
+        }
+        if (usuname.equals("NOHAY")) {
+            JOptionPane.showMessageDialog(null, "Primero es necesario acceder con su cuenta de cliente para comprar");
+        } else {
+            LocalDateTime fechaHoraActual = LocalDateTime.now();
+
+            // Formatear la fecha y hora según tu necesidad
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String fechaHora = fechaHoraActual.format(formato);
+            FileManager.guardarInformacion(fechaHora, sumacant, usuname, sumaprecio, "Usuarios/FacturasVentas.txt");
+            Fecha = fechaHora;
+            cantidad = sumacant;
+            name = usuname;
+            price = sumaprecio;
+            FacturaCompra fc = new FacturaCompra();
+            fc.setVisible(true);
+        }
+    }//GEN-LAST:event_comprarActionPerformed
 
     /**
      * @param args the command line arguments

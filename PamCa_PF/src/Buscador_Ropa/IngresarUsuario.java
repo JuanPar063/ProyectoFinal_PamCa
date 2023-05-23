@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
  */
 public class IngresarUsuario extends javax.swing.JFrame {
 
+    public static String usuname = "NOHAY";
     
     public IngresarUsuario() {
         initComponents();
@@ -172,7 +173,8 @@ public class IngresarUsuario extends javax.swing.JFrame {
                 String Nombre = nombre.getText();
 
                 if (FileManager.comprobar(Nombre, "Usuarios/Clientes.txt")) {
-                    JOptionPane.showMessageDialog(null, "Usuario Encontrado");
+                    usuname = Nombre;
+                    JOptionPane.showMessageDialog(null, "Se accedió exitosamente.");
 
                 } else {
                     JOptionPane.showMessageDialog(null, "No se encontró al usuario");

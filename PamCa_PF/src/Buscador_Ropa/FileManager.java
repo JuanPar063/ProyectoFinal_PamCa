@@ -39,19 +39,30 @@ public class FileManager {
                 String linea = scanner.nextLine();
                 String[] campos = linea.split("\t"); // separar los campos por la tabulación
                 String nombre = campos[0];
-                
 
                 if (nombre.equals(nom)) {
                     re = true;
                 }
-                
+
             }
-            
+
             scanner.close();
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "HUBO UN PROBLEMA AL MOMENTO DE LEER EL ARCHIVO");
         }
 
         return re;
+    }
+
+    public static void guardarInformacion(String fecha, int cantidad, String nombre, float total, String filePath) {
+        try ( FileWriter writer = new FileWriter(filePath, true)) {
+           
+            PrintWriter archivo = new PrintWriter(writer);
+            archivo.println(fecha + "\t" + cantidad + "\t" + nombre + "\t" + total);
+            archivo.close();
+            
+        } catch (IOException e) {
+           JOptionPane.showMessageDialog(null, "no se pudo guardar la factura.");
+        }
     }
 }

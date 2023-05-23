@@ -1,14 +1,5 @@
 package Buscador_Ropa;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Juan Pardo
@@ -61,6 +52,11 @@ public class Menú_inicio extends javax.swing.JFrame {
         jLabel2.setText("Bienvenido al catalogo de ropa a la moda PamCa. A continuación seleccione el tipo de prenda que esta buscando.");
 
         calzado.setText("Calzado");
+        calzado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calzadoActionPerformed(evt);
+            }
+        });
 
         prendassuperiores.setText("Prendas superiores");
         prendassuperiores.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +66,11 @@ public class Menú_inicio extends javax.swing.JFrame {
         });
 
         prendasinferiores.setText("Prendas inferiores");
+        prendasinferiores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prendasinferioresActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,6 +142,18 @@ public class Menú_inicio extends javax.swing.JFrame {
         ps.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_prendassuperioresActionPerformed
+
+    private void prendasinferioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prendasinferioresActionPerformed
+        PrendasInferiores pi = new PrendasInferiores();
+        pi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_prendasinferioresActionPerformed
+
+    private void calzadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calzadoActionPerformed
+        Calzado ca = new Calzado();
+        ca.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_calzadoActionPerformed
 
     /**
      * @param args the command line arguments

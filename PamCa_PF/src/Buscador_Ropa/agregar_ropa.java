@@ -25,6 +25,7 @@ public class agregar_ropa extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         Cerrar_Carrito.confirmarSalida(this);
+        
     }
 
     int idropa = 0;
@@ -50,10 +51,8 @@ public class agregar_ropa extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         nombre = new javax.swing.JTextField();
         precios = new javax.swing.JTextField();
-        tipo = new javax.swing.JTextField();
         agregar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        talla = new javax.swing.JTextField();
         buscar = new javax.swing.JButton();
         cantidades = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -61,6 +60,8 @@ public class agregar_ropa extends javax.swing.JFrame {
         imagen = new javax.swing.JTextField();
         regresar = new javax.swing.JButton();
         limpiar = new javax.swing.JButton();
+        tipo = new javax.swing.JComboBox<>();
+        talla = new javax.swing.JTextField();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -88,12 +89,6 @@ public class agregar_ropa extends javax.swing.JFrame {
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
-            }
-        });
-
-        tipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tipoActionPerformed(evt);
             }
         });
 
@@ -133,21 +128,12 @@ public class agregar_ropa extends javax.swing.JFrame {
             }
         });
 
+        tipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "prenda superior", "prenda inferior", "calzado" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(170, 170, 170))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(89, 89, 89))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -162,26 +148,37 @@ public class agregar_ropa extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addGap(121, 121, 121)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cantidades)
+                            .addComponent(cantidades, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                             .addComponent(id)
                             .addComponent(nombre)
                             .addComponent(precios)
-                            .addComponent(tipo, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(talla, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
-                            .addComponent(imagen)))
+                            .addComponent(imagen)
+                            .addComponent(tipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(talla)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(regresar)
                         .addGap(97, 97, 97)
                         .addComponent(agregar)))
                 .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(89, 89, 89))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(165, 165, 165))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -194,9 +191,9 @@ public class agregar_ropa extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(talla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -231,21 +228,15 @@ public class agregar_ropa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
 
-    private void tipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tipoActionPerformed
-
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
         try {
 
             // Validación para que se ingrese un valor en todos los campos y no queden vacios
-            if (id.getText().isEmpty() | nombre.getText().isEmpty() | tipo.getText().isEmpty() | talla.getText().isEmpty() | precios.getText().isEmpty() | cantidades.getText().isEmpty() | imagen.getText().isEmpty()) {
+            if (id.getText().isEmpty() | nombre.getText().isEmpty() | talla.getText().isEmpty() | precios.getText().isEmpty() | cantidades.getText().isEmpty() | imagen.getText().isEmpty()) {
                 if (id.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Ingrese un ID, por favor.");
                 } else if (nombre.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Ingrese el nombre de la prenda, por favor.");
-                } else if (tipo.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Ingrese que tipo de prenda es, por favor.");
                 } else if (talla.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Ingrese la talla de la prenda, por favor.");
                 } else if (precios.getText().isEmpty()) {
@@ -256,7 +247,7 @@ public class agregar_ropa extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Ingrese una imagen para la prenda, por favor.");
                 }
             } else {
-
+                
                 // Validación para que sean los tipos de valores que se necesitan
                 int idropa = Integer.parseInt(id.getText());
                 float precio = Float.parseFloat(precios.getText());
@@ -285,7 +276,7 @@ public class agregar_ropa extends javax.swing.JFrame {
                         PreparedStatement insertar = conexion.prepareStatement(insertarSQL);
                         insertar.setInt(1, idropa);
                         insertar.setString(2, nombre.getText());
-                        insertar.setString(3, tipo.getText());
+                        insertar.setString(3, tipo.getSelectedItem().toString());
                         insertar.setString(4, talla.getText());
                         insertar.setFloat(5, precio);
                         insertar.setInt(6, cantidad);
@@ -332,7 +323,6 @@ public class agregar_ropa extends javax.swing.JFrame {
         talla.setText("");
         cantidades.setText("");
         precios.setText("");
-        tipo.setText("");
         imagen.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
 
@@ -393,6 +383,6 @@ public class agregar_ropa extends javax.swing.JFrame {
     private javax.swing.JTextField precios;
     private javax.swing.JButton regresar;
     private javax.swing.JTextField talla;
-    private javax.swing.JTextField tipo;
+    private javax.swing.JComboBox<String> tipo;
     // End of variables declaration//GEN-END:variables
 }
